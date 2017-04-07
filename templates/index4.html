@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<form action="{% url 'go_form' %}" method="post" >
+
+                    <label>Your name</label><input type="text" value=" {% if not my_message.name == '大明'  %}小明{% else %}大明不存在{% endif %}" name="name" placeholder="name" />
+					<p>Your email</p>
+					<p><input type="text" name="email" value="{{ my_message.email }}"  placeholder="email"/></p>
+					<p>Username</p>
+					<p><input type="text" name="username" value="{{ my_message.user_name }}" placeholder="username" /></p>
+					<p>password</p>
+					<p><input type="text" name="password" value="{{ my_message.password }}" placeholder="passwd" /></p>
+					<div>Confirm password</div>
+					<div><input type="text" name="Repassword" placeholder="repasswd" />
+					</div><br />
+                    <p>留言板</p>
+                    <div class="errornote"><textarea>  </textarea></div>
+                <input type="submit" class="button" value="提交"/>
+
+                {% csrf_token %}
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>
